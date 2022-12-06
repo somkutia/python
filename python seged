@@ -1,0 +1,154 @@
+
+#kiirás
+with open('eredmeny.txt', 'w', encoding='utf-8') as eredmeny:
+    eredmeny.write(f"A lefoglalt helyek száma a néző által választott napon, teremben és időpontban: {foglaltdb}""\n"f"A bevétel összege adott napon {bevetel(foglaltdb)} Ft.")
+    for elem in adatok:
+        for i in range(len(elem)):
+            elemuj=int(elem[0]), elem[1]
+        kifile.write(str(elemuj)+" ")
+        kifile.write("\n")
+
+célfájl = open('eloadasok.txt', 'w') 
+for elem in eloadasok:
+    print(elem, file=célfájl)
+célfájl.close()
+
+
+#beolvasás
+adatok=[]
+with open("Timeline_of_ programming_languages.txt","r", encoding="utf-8") as befile:
+    for sor in befile:
+        adat=sor.strip().split(";")
+        for i in range(len(adat)):
+            adatuj=int(adat[0]), adat[1], adat[2], adat[3]
+        adatok.append(adatuj)
+
+
+forrásfájl = open('eloadasok.txt')
+for sor in forrásfájl:
+    eloadasokuj.append(sor.strip())
+forrásfájl.close()
+
+#LISTÁK
+
+#számolja hány darab 1-es van a listában 
+tartalom = ["1","1", "1", "0"]
+foglaltdb = 0
+foglalt = ["1"]
+for allista in tartalom:
+    for allistaelem in allista:
+        for elem in foglalt:
+            foglaltdb+=allistaelem.count(elem)
+print(foglaltdb)
+
+
+#számolja hogy hány db 1-es van a listában
+tartalom = ["1","1", "1", "0"]
+osszbevetel = 0
+for ar in tartalom:
+    if ar == '1':
+        osszbevetel += 1
+
+print(osszbevetel)
+
+#szerepel-e a listában
+szinlista = ["kék","piros","zöld","sárga","barna",]
+bekerszin= input("Kérek egy színt:")
+if(szinlista.count(bekerszin) > 0):
+    print("Ez a szín már szerepel a listában.")
+
+else:
+    print("Ez a szín nem szerepel a listában.")
+
+
+#hányszor szereoel a listában
+szinlista = ["kék","kék","zöld","sárga","barna",]
+bekerszin= input("Kérek egy színt:")
+if(szinlista.count(bekerszin) > 0):
+    print(f"Ez a szín {szinlista.count(bekerszin)}x szerepel a listában.")
+else:
+    print("Ez a szín nem szerepel a listában.")
+for kiirszin in szinlista:
+    print(kiirszin, end=",")
+
+
+#lista bejárás
+szavak = ['ajtó','tojás','Ottó','Tamás', 'tép','Tesla','alma','python']
+for vizsgalo in range(len(szavak)):
+    if(szavak[vizsgalo][0]== "t" or szavak[vizsgalo][0]== "T"):
+        print(szavak[vizsgalo][0])
+
+szavak = ['ajtó','tojás','Ottó','Tamás', 'tép','Tesla','alma','python']
+for vizsgalo in range(len(szavak)):
+        print(szavak[vizsgalo], end="\n") #egymás alá rakja az elemeket
+        #print(szavak[vizsgalo], end=";") # egymás mellé rakja
+
+
+
+#random
+import random
+
+velszamok=[]
+for i in range(0,10):
+    velszam=random.randint(0,50)
+    if(velszam%4==0):
+        velszamok.append(velszam)
+print(velszamok)
+print(f"A lsitában levő elemek száma: {len(velszamok)}")  
+
+
+kernevek=[]
+
+kernev=input("Kérek egynevet:")
+
+db=0
+while (kernev!="" and db<3):
+    kernevek.append(kernev)
+    db+=1
+    if(db<3):
+        kernev=input("Kérek egy nevet:")
+    else:
+        print("vége")
+print(kernevek)    
+
+#ÁGAZATI
+
+#ágazati
+sakk=[]
+with open("eredmenyek.txt","r", encoding="utf-8") as kifile:
+    for sor in kifile:
+        adat=sor.strip()
+        sakk.append(adat)
+
+print(sakk)
+osszparti=len(sakk)
+FH=sakk.count("FH")
+FK=sakk.count("FK")
+XX=sakk.count("XX")
+
+
+#ágazati
+rekeszdb=int(input("Adja meg a rendelt rekeszek darabszámát(5-20):"))
+szuretdb=int(input("Adja meg a mai napon leszűretelt almák darabszámát(100-200):"))
+rendeltmenny = rekeszdb*12
+maxmenny=round(szuretdb/12)
+if szuretdb > rendeltmenny:
+    print("A rendelt mennyiseg teljesithető")
+else:
+    print(f"A rendelt mennyiség nem teljesíthető, max. {maxmenny} rekeszt lehet értékesíteni.")
+
+
+#ágazati
+def bank(ossz,fti):
+    if (fti>12):
+        return ossz*(12/100)
+    else:
+        return ossz*(5/100)
+
+
+for bekeres in range(4):
+    osszeg=int(input("Adja meg a betenni kívánt összeget:"))
+    futamido=int(input("Adja meg a betét futamidjét(hónapban):"))
+    print(f"A betett összeg után {bank(osszeg,futamido):.2f} Ft betéti kamat jár.")
+
+
